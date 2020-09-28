@@ -1,0 +1,42 @@
+
+
+module GameApi{
+	
+	 struct  Map
+			{
+			string key;
+			long value;
+			 };
+
+typedef sequence<Map> hashmap;
+
+struct Hashtable {
+	string key;
+	hashmap value;
+	};
+
+typedef sequence<Hashtable> hash;
+
+	interface Player {
+
+	 string createPlayerAccount(in string username, in string firstName, in string lastName, in long age, in string password, in string ip);
+
+	 boolean playerSignIn(in string username, in string password, in string ip);
+
+	 string playerSignOut(in string username, in string ip);
+
+	 boolean transferAccount(in string username, in string password, in string oldpassword, in string newpassword);
+
+   };
+
+	interface Admin {
+
+		 boolean adminSignIn(in string username, in string password, in string ip);
+
+		 hash getPlayerStatus();
+
+		 boolean suspendAccount(in string username, in string password, in string adminip, in string usernameToSuspend);
+
+	};
+
+};
